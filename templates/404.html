@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка 404</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="error-404-container">
+        <h1>404</h1>
+        <p>Страница, которую вы ищете, не найдена.</p>
+        <p><strong>Ваш IP-адрес:</strong> {{ client_ip }}</p>
+        <p><strong>Дата доступа:</strong> {{ access_time }}</p>
+        <p><a href="{{ url_for('index') }}">Вернуться на главную</a></p>
+        
+        <div class="access-log-container">
+            <h2>Журнал посещений:</h2>
+            <div class="log-entries">
+                {{ log_html|safe }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Аптека "Здоровье"{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>Учебный сайт аптеки</h2>
+                </div>
+                <div class="nav-logo">
+                    <h1>Не болей</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="{{ url_for('index') }}">Главная</a>
+                    <a href="#">Поиск лекарств</a>
+                    <a href="#">Войти</a>
+                    <a href="#">Регистрация</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>{{ student_name }} | {{ student_group }} | 2025 год</p>
+        </div>
+    </footer>
+</body>
+</html>
