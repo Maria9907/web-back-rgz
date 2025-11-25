@@ -70,17 +70,17 @@
                                 <span class="price">{{ "%.2f"|format(medicine.price) }} руб.</span>
                                 <span class="quantity {{ 'out-of-stock' if medicine.quantity == 0 else 'in-stock' }}">
                                     {% if medicine.quantity == 0 %}
-                                        ❌ Отсутствует
+                                        Отсутствует
                                     {% else %}
-                                        ✅ В наличии: {{ medicine.quantity }}
+                                         В наличии: {{ medicine.quantity }}
                                     {% endif %}
                                 </span>
                             </div>
                             
                             {% if medicine.prescription_required %}
-                                <span class="prescription-label">📋 Рецептурный</span>
+                                <span class="prescription-label1"> Рецептурный</span>
                             {% else %}
-                                <span class="prescription-label">🆓 Без рецепта</span>
+                                <span class="prescription-label"> Без рецепта</span>
                             {% endif %}
                         </div>
                     </div>

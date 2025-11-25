@@ -454,7 +454,7 @@ def add_medicine():
     try:
         if current_app.config['DB_TYPE'] == 'postgres':
             cur.execute("""
-                INSERT INTO medicines (name, generic_name, prescription_required, price, quantity)
+                INSERT INTO medicines (name, generic_name, description, prescription_required, price, quantity)
                 VALUES (%s, %s, %s, %s, %s, %s)
             """, (name, generic_name, prescription_required, price, quantity))
         else:

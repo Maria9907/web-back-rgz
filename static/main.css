@@ -12,46 +12,115 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Навигация */
+/* HEADER */
 .navbar {
     background: #2c3e50;
-    color: white;
     padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
-.nav-logo h1 {
+.nav-brand {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-logo {
+    height: 50px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.nav-brand-text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-brand-text h1 {
+    margin: 0;
     font-size: 1.5rem;
-    font-weight: bold;
+    color: white;
 }
 
+.nav-slogan {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #bdc3c7;
+}
+
+/* Навигационные ссылки */
 .nav-links {
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 1rem;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
 }
 
 .nav-links a:hover {
     background-color: #34495e;
 }
 
-/* Основной контент */
+/* Стили для пользовательской информации */
+.user-greeting {
+    color: #ffffff;
+    
+
+}
+
+.btn-logout, .btn-delete {
+    background: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    margin: 2px;
+}
+
+/* Кнопки Выйти и Удалить аккаунт  */
+.btn-logout, .btn-delete {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.btn-logout:hover {
+    background-color: #aaaaaa;
+}
+
+.btn-delete:hover {
+    background-color: #e74c3c;
+}
+
+.logout-form, .delete-form {
+    display: inline;
+    margin: 0;
+}
+
+.user-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
 .main-content {
     min-height: calc(100vh - 140px);
     padding: 2rem 0;
@@ -63,9 +132,9 @@ body {
     padding: 0 2rem;
 }
 
-/* Герой-секция */
+/* СИНЯЯ СЕКЦИЯ*/
 .hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #434f87 0%, #74afe6 100%);
     color: white;
     padding: 4rem 0;
     text-align: center;
@@ -82,7 +151,7 @@ body {
     opacity: 0.9;
 }
 
-/* Кнопки */
+/* КНОПКИ*/
 .btn {
     display: inline-block;
     padding: 0.8rem 1.5rem;
@@ -101,7 +170,7 @@ body {
 }
 
 .btn-primary:hover {
-    background: #2980b9;
+    background: #2c3e50;
     transform: translateY(-2px);
 }
 
@@ -111,11 +180,11 @@ body {
 }
 
 .btn-secondary:hover {
-    background: #7f8c8d;
+    background: #2c3e50;
     transform: translateY(-2px);
 }
 
-/* Сетка фич */
+/* ПРЕИМУЩЕСТВА */
 .features-section {
     padding: 4rem 0;
 }
@@ -140,80 +209,7 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Футер */
-.footer {
-    background: #34495e;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: auto;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-/* Стили для страниц ошибок */
-.error-container {
-    text-align: center;
-    padding: 4rem 2rem;
-}
-
-.error-404-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-.access-log-container {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-}
-
-.log-entry {
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    background: white;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 0.875rem;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .nav-links {
-        gap: 1rem;
-    }
-    
-    .hero-section h2 {
-        font-size: 2rem;
-    }
-    
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-/* Стили для форм поиска */
+/* СТИЛИ ДЛЯ ФОРМ ПОИСКА */
 .search-form {
     background: white;
     padding: 2rem;
@@ -258,7 +254,9 @@ body {
     margin-top: 1.5rem;
 }
 
-/* Стили для карточек лекарств */
+
+
+/* СТИЛИ ДЛЯ КАРТОЧЕК ЛЕКАРСТВ */
 .medicines-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -279,20 +277,6 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-.medicine-image {
-    height: 150px;
-    background: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid #eee;
-}
-
-.medicine-img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
 
 .medicine-info {
     padding: 1.5rem;
@@ -320,7 +304,7 @@ body {
 
 .price {
     font-weight: bold;
-    color: #27ae60;
+    color: #002710;
     font-size: 1.2rem;
 }
 
@@ -331,17 +315,7 @@ body {
     font-weight: bold;
 }
 
-.quantity.in-stock {
-    background: #d4edda;
-    color: #155724;
-}
-
-.quantity.out-of-stock {
-    background: #f8d7da;
-    color: #721c24;
-}
-
-.prescription-label {
+.prescription-label,.prescription-label1 {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     border-radius: 4px;
@@ -350,11 +324,32 @@ body {
 }
 
 .prescription-label {
-    background: #fff3cd;
-    color: #856404;
+    background: #232b56;
+    color: #e6edf4;
+}
+.prescription-label1 {
+    background: #232b56;
+    color: #dd2a12;
 }
 
-/* Пагинация */
+/* ОПИСАНИЕ ЛЕКАРСТВ */
+.medicine-description {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #232b56;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.medicine-description p {
+    margin: 0;
+    color: #495057;
+}
+
+
+/* ПАГИНАЦИЯ */
 .pagination {
     display: flex;
     justify-content: center;
@@ -369,7 +364,9 @@ body {
     font-weight: bold;
 }
 
-/* Сообщения о результатах */
+
+
+/* СООБЩЕНИЕ О РЕЗУЛЬТАТАХ */
 .no-results,
 .welcome-search {
     text-align: center;
@@ -388,29 +385,6 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Адаптивность для поиска */
-@media (max-width: 768px) {
-    .form-row {
-        flex-direction: column;
-    }
-    
-    .medicines-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .medicine-details {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-    
-    .pagination {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-}
-
-
 
 /* Стили для форм аутентификации */
 .auth-form {
@@ -428,7 +402,7 @@ body {
     color: #2c3e50;
 }
 
-/* Стили для алертов */
+/* Стили для  */
 .alert {
     padding: 1rem;
     margin-bottom: 1rem;
@@ -453,6 +427,9 @@ body {
     background-color: #d1ecf1;
     border-color: #bee5eb;
 }
+
+
+
 
 /* Стили для админ-панели */
 .admin-actions {
@@ -498,62 +475,6 @@ body {
     gap: 1rem;
 }
 
-@media (max-width: 768px) {
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Стили для пользовательской информации */
-.user-info {
-    color: #2c3e50;
-    font-weight: 500;
-}
-
-.btn-logout, .btn-delete {
-    background: none;
-    border: 1px solid #ddd;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 0.5rem;
-}
-
-.btn-logout:hover {
-    background: #f8f9fa;
-}
-
-.btn-delete {
-    color: #dc3545;
-    border-color: #dc3545;
-}
-
-.btn-delete:hover {
-    background: #dc3545;
-    color: white;
-}
-
-.admin-info {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: #e8f4fd;
-    border-radius: 4px;
-    border-left: 4px solid #3498db;
-}
-
-.admin-info p {
-    margin: 0.5rem 0;
-}
-
-
-
-
-
-
-
-
-
-
 /* Стили для таблицы лекарств в админке */
 .medicines-table {
     width: 100%;
@@ -584,55 +505,13 @@ body {
 }
 
 .medicines-table .btn-edit {
-    background-color: #4CAF50;
+    background-color: #0f5c12;
     color: white;
 }
 
 .medicines-table .btn-delete {
-    background-color: #f44336;
+    background-color: #d30e00;
     color: white;
-}
-
-.medicines-table .out-of-stock {
-    color: #f44336;
-    font-weight: bold;
-}
-
-.medicines-table .in-stock {
-    color: #4CAF50;
-}
-
-/* Стили для форм удаления */
-.delete-form {
-    display: inline;
-}
-
-
-
-
-
-
-/* Стили для описания лекарств */
-.medicine-description {
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-left: 3px solid #007bff;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.medicine-description p {
-    margin: 0;
-    color: #495057;
-}
-
-.description-cell {
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 /* Улучшаем внешний вид форм */
@@ -645,4 +524,110 @@ body {
     font-weight: 600;
     margin-bottom: 5px;
     display: block;
+}
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .nav-brand {
+        gap: 10px;
+    }
+    
+    .nav-logo {
+        height: 40px;
+    }
+    
+    .nav-brand-text h1 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-brand-text p {
+        font-size: 0.8rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .medicines-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .medicine-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* СТИЛИ ДЛЯ СТРАНИЦ ОШИБОК */
+.error-container {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.error-404-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.access-log-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.log-entry {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.875rem;
+}
+
+
+/* FOOTER */
+
+.footer {
+    background: #34495e;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }

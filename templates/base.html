@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Аптека "Здоровье"{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon-32x32.png') }}">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-brand">
-                    <h1>Аптека "Здоровье"</h1>
-                    <p>Ваше здоровье - наша забота</p>
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Логотип аптеки Здоровье" class="nav-logo">
+                    <div class="nav-brand-text">
+                        <h1>Аптека "Здоровье"</h1>
+                        <p class="nav-slogan">Ваше здоровье - наша забота</p>
+                    </div>
                 </div>
                 <div class="nav-links">
                     <a href="{{ url_for('index') }}">Главная</a>
@@ -34,7 +41,7 @@
                             </div>
                         </div>
                     {% else %}
-                        <div class="auth-links">
+                        <div >
                             <a href="{{ url_for('login') }}" class="btn-login">Войти</a>
                             <a href="{{ url_for('register') }}" class="btn-register">Регистрация</a>
                         </div>
