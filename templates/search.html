@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Поиск лекарств{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Поиск лекарств</h1>
+    
+    <form method="GET" action="{{ url_for('search_medicines') }}" class="search-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Название:</label>
+                <input type="text" id="name" name="name" 
+                       value="{{ search_params.get('name', '') }}"
+                       placeholder="Введите название лекарства">
+            </div>
+            
+            <div class="form-group">
+                <label for="min_price">Минимальная цена:</label>
+                <input type="number" id="min_price" name="min_price" step="0.01" min="0"
+                       value="{{ search_params.get('min_price', '') }}"
+                       placeholder="0.00">
+            </div>
+            
+            <div class="form-group">
+                <label for="max_price">Максимальная цена:</label>
+                <input type="number" id="max_price" name="max_price" step="0.01" min="0"
+                       value="{{ search_params.get('max_price', '') }}"
+                       placeholder="1000.00">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="prescription_required">Рецептурность:</label>
+            <select id="prescription_required" name="prescription_required">
+                <option value="">Все препараты</option>
+                <option value="1" {% if search_params.get('prescription_required') == '1' %}selected{% endif %}>
+                    Только рецептурные
+                </option>
+                <option value="0" {% if search_params.get('prescription_required') == '0' %}selected{% endif %}>
+                    Без рецепта
+                </option>
+            </select>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Найти</button>
+            <a href="{{ url_for('search_medicines') }}" class="btn btn-secondary">Сбросить</a>
+        </div>
+    </form>
+    
+    {% if medicines %}
+        <div class="search-results">
+            <h2>Найдено лекарств: {{ total_count }}</h2>
+            
+            <div class="medicines-grid">
+                {% for medicine in medicines %}
+                    <div class="medicine-card">
+                        <div class="medicine-info">
+                            <h3>{{ medicine.name }}</h3>
+                            {% if medicine.generic_name %}
+                                <p class="generic-name">{{ medicine.generic_name }}</p>
+                            {% endif %}
+                            
+                            <div class="medicine-details">
+                                <span class="price">{{ "%.2f"|format(medicine.price) }} руб.</span>
+                                <span class="quantity {{ 'out-of-stock' if medicine.quantity == 0 else 'in-stock' }}">
+                                    {% if medicine.quantity == 0 %}
+                                        ❌ Отсутствует
+                                    {% else %}
+                                        ✅ В наличии: {{ medicine.quantity }}
+                                    {% endif %}
+                                </span>
+                            </div>
+                            
+                            {% if medicine.prescription_required %}
+                                <span class="prescription-label">📋 Рецептурный</span>
+                            {% else %}
+                                <span class="prescription-label">🆓 Без рецепта</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Пагинация -->
+            {% if total_pages > 1 %}
+                <div class="pagination">
+                    {% if page > 1 %}
+                        <a href="{{ url_for('search_medicines', page=page-1, **search_params) }}" 
+                           class="btn btn-secondary">
+                            ← Предыдущие
+                        </a>
+                    {% endif %}
+                    
+                    <span class="page-info">
+                        Страница {{ page }} из {{ total_pages }}
+                    </span>
+                    
+                    {% if page < total_pages %}
+                        <a href="{{ url_for('search_medicines', page=page+1, **search_params) }}" 
+                           class="btn btn-secondary">
+                            Следующие →
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    {% elif request.args %}
+        <div class="no-results">
+            <h2>По вашему запросу ничего не найдено</h2>
+            <p>Попробуйте изменить параметры поиска</p>
+        </div>
+    {% else %}
+        <div class="welcome-search">
+            <h2>Введите параметры для поиска лекарств</h2>
+            <p>Используйте фильтры выше для поиска нужных препаратов</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

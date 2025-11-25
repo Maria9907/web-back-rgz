@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Панель администратора{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Панель администратора</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <div class="admin-actions">
+        <a href="{{ url_for('add_medicine') }}" class="btn btn-primary">Добавить лекарство</a>
+        <a href="{{ url_for('admin_medicines') }}" class="btn btn-primary">Управление лекарствами</a>
+        <a href="{{ url_for('search_medicines') }}" class="btn btn-secondary">Просмотреть все лекарства</a>
+    </div>
+    
+    <div class="admin-stats">
+        <h2>Статистика</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Всего лекарств</h3>
+                <p class="stat-number">{{ total_medicines }}</p>
+            </div>
+            <div class="stat-card">
+                <h3>Рецептурные</h3>
+                <p class="stat-number">{{ prescription_medicines }}</p>
+            </div>
+            <div class="stat-card">
+                <h3>Отсутствуют</h3>
+                <p class="stat-number">{{ out_of_stock }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-management">
+    <h2>Управление лекарствами</h2>
+    <div class="management-actions">
+        <a href="{{ url_for('add_medicine') }}" class="btn btn-primary">Добавить лекарство</a>
+        <a href="{{ url_for('search_medicines') }}" class="btn btn-secondary">Просмотреть все лекарства</a>
+    </div>
+</div>
+</div>
+{% endblock %}

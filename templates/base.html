@@ -10,17 +10,35 @@
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <div class="nav-logo">
-                    <h2>Учебный сайт аптеки</h2>
-                </div>
-                <div class="nav-logo">
-                    <h1>Не болей</h1>
+                <div class="nav-brand">
+                    <h1>Аптека "Здоровье"</h1>
+                    <p>Ваше здоровье - наша забота</p>
                 </div>
                 <div class="nav-links">
                     <a href="{{ url_for('index') }}">Главная</a>
-                    <a href="#">Поиск лекарств</a>
-                    <a href="#">Войти</a>
-                    <a href="#">Регистрация</a>
+                    <a href="{{ url_for('search_medicines') }}">Поиск лекарств</a>
+                    
+                    {% if current_user %}
+                        {% if is_admin %}
+                            <a href="{{ url_for('admin_panel') }}" class="admin-link">Панель администратора</a>
+                        {% endif %}
+                        <div class="user-menu">
+                            <span class="user-greeting">Здравствуйте, <strong>{{ current_user.username }}</strong></span>
+                            <div class="user-actions">
+                                <form action="{{ url_for('logout') }}" method="GET" class="logout-form">
+                                    <button type="submit" class="btn-logout">Выйти</button>
+                                </form>
+                                <form action="{{ url_for('delete_account') }}" method="POST" class="delete-form">
+                                    <button type="submit" class="btn-delete" onclick="return confirm('Вы уверены, что хотите удалить свой аккаунт? Это действие нельзя отменить.')">Удалить аккаунт</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="auth-links">
+                            <a href="{{ url_for('login') }}" class="btn-login">Войти</a>
+                            <a href="{{ url_for('register') }}" class="btn-register">Регистрация</a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </nav>
@@ -32,7 +50,12 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p>{{ student_name }} | {{ student_group }} | 2025 год</p>
+            <div class="student-info">
+                <p><strong>{{ student_name }}</strong> | Группа: {{ student_group }} | 2025 год</p>
+            </div>
+            <div class="footer-links">
+                <p>Учебный проект по веб-программированию</p>
+            </div>
         </div>
     </footer>
 </body>

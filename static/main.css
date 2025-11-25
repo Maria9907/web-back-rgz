@@ -202,3 +202,407 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Стили для форм поиска */
+.search-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Стили для карточек лекарств */
+.medicines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.medicine-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.medicine-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.medicine-image {
+    height: 150px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+}
+
+.medicine-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.medicine-info {
+    padding: 1.5rem;
+}
+
+.medicine-info h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.generic-name {
+    color: #7f8c8d;
+    font-style: italic;
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+}
+
+.medicine-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-weight: bold;
+    color: #27ae60;
+    font-size: 1.2rem;
+}
+
+.quantity {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.quantity.in-stock {
+    background: #d4edda;
+    color: #155724;
+}
+
+.quantity.out-of-stock {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.prescription-label {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.prescription-label {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.page-info {
+    color: #7f8c8d;
+    font-weight: bold;
+}
+
+/* Сообщения о результатах */
+.no-results,
+.welcome-search {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #7f8c8d;
+}
+
+.no-results h2,
+.welcome-search h2 {
+    color: #95a5a6;
+    margin-bottom: 1rem;
+}
+
+.search-results h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* Адаптивность для поиска */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .medicines-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .medicine-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+
+
+/* Стили для форм аутентификации */
+.auth-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.auth-form h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+/* Стили для алертов */
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+/* Стили для админ-панели */
+.admin-actions {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.admin-actions .btn {
+    margin: 0 0.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3498db;
+    margin: 0.5rem 0 0 0;
+}
+
+/* Стили для форм лекарств */
+.medicine-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Стили для пользовательской информации */
+.user-info {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.btn-logout, .btn-delete {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.btn-logout:hover {
+    background: #f8f9fa;
+}
+
+.btn-delete {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.admin-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #e8f4fd;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;
+}
+
+.admin-info p {
+    margin: 0.5rem 0;
+}
+
+
+
+
+
+
+
+
+
+
+/* Стили для таблицы лекарств в админке */
+.medicines-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.medicines-table th,
+.medicines-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.medicines-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.medicines-table .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.medicines-table .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.medicines-table .btn-edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.medicines-table .btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.medicines-table .out-of-stock {
+    color: #f44336;
+    font-weight: bold;
+}
+
+.medicines-table .in-stock {
+    color: #4CAF50;
+}
+
+/* Стили для форм удаления */
+.delete-form {
+    display: inline;
+}
