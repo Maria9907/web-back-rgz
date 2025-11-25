@@ -421,6 +421,7 @@ def add_medicine():
     # Получаем данные из формы
     name = request.form.get('name', '').strip()
     generic_name = request.form.get('generic_name', '').strip()
+    description = request.form.get('description', '').strip() 
     prescription_required = bool(request.form.get('prescription_required'))
     price = request.form.get('price', '0').strip()
     quantity = request.form.get('quantity', '0').strip()
@@ -454,13 +455,13 @@ def add_medicine():
         if current_app.config['DB_TYPE'] == 'postgres':
             cur.execute("""
                 INSERT INTO medicines (name, generic_name, prescription_required, price, quantity)
-                VALUES (%s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s, %s, %s)
             """, (name, generic_name, prescription_required, price, quantity))
         else:
             cur.execute("""
-                INSERT INTO medicines (name, generic_name, prescription_required, price, quantity)
+                INSERT INTO medicines (name, generic_name, description, prescription_required, price, quantity)
                 VALUES (?, ?, ?, ?, ?)
-            """, (name, generic_name, prescription_required, price, quantity))
+            """, (name, generic_name, description, prescription_required, price, quantity))
         
         conn.commit()
         flash("Лекарство успешно добавлено", "success")
@@ -499,6 +500,7 @@ def edit_medicine(medicine_id):
         # Получаем данные из формы
         name = request.form.get('name', '').strip()
         generic_name = request.form.get('generic_name', '').strip()
+        description = request.form.get('description', '').strip()
         prescription_required = bool(request.form.get('prescription_required'))
         price = request.form.get('price', '0').strip()
         quantity = request.form.get('quantity', '0').strip()
@@ -530,17 +532,17 @@ def edit_medicine(medicine_id):
         if current_app.config['DB_TYPE'] == 'postgres':
             cur.execute("""
                 UPDATE medicines 
-                SET name = %s, generic_name = %s, prescription_required = %s, 
+                SET name = %s, generic_name = %s, description = %s, prescription_required = %s, 
                     price = %s, quantity = %s
                 WHERE id = %s
-            """, (name, generic_name, prescription_required, price, quantity, medicine_id))
+            """, (name, generic_name, description, prescription_required, price, quantity, medicine_id))
         else:
             cur.execute("""
                 UPDATE medicines 
-                SET name = ?, generic_name = ?, prescription_required = ?, 
+                SET name = ?, generic_name = ?, description = ?, prescription_required = ?, 
                     price = ?, quantity = ?
                 WHERE id = ?
-            """, (name, generic_name, prescription_required, price, quantity, medicine_id))
+            """, (name, generic_name, description, prescription_required, price, quantity, medicine_id))
         
         conn.commit()
         flash("Лекарство успешно обновлено", "success")

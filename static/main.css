@@ -606,3 +606,43 @@ body {
 .delete-form {
     display: inline;
 }
+
+
+
+
+
+
+/* Стили для описания лекарств */
+.medicine-description {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #007bff;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.medicine-description p {
+    margin: 0;
+    color: #495057;
+}
+
+.description-cell {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Улучшаем внешний вид форм */
+.medicine-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}

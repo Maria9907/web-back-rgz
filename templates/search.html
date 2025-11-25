@@ -61,7 +61,11 @@
                             {% if medicine.generic_name %}
                                 <p class="generic-name">{{ medicine.generic_name }}</p>
                             {% endif %}
-                            
+                            {% if medicine.description %}
+                                <div class="medicine-description">
+                                    <p>{{ medicine.description }}</p>
+                                </div>
+                            {% endif %}
                             <div class="medicine-details">
                                 <span class="price">{{ "%.2f"|format(medicine.price) }} руб.</span>
                                 <span class="quantity {{ 'out-of-stock' if medicine.quantity == 0 else 'in-stock' }}">
