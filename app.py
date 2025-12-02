@@ -456,11 +456,11 @@ def add_medicine():
             cur.execute("""
                 INSERT INTO medicines (name, generic_name, description, prescription_required, price, quantity)
                 VALUES (%s, %s, %s, %s, %s, %s)
-            """, (name, generic_name, prescription_required, price, quantity))
+            """, (name, generic_name, description,  prescription_required, price, quantity))
         else:
             cur.execute("""
                 INSERT INTO medicines (name, generic_name, description, prescription_required, price, quantity)
-                VALUES (?, ?, ?, ?, ?)
+                VALUES (?, ?, ?,?, ?, ?)
             """, (name, generic_name, description, prescription_required, price, quantity))
         
         conn.commit()
