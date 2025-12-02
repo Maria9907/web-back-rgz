@@ -32,7 +32,7 @@ def db_connect():
         cur = conn.cursor(cursor_factory=RealDictCursor)
     else:
         dir_path = path.dirname(path.realpath(__file__))
-        db_path = path.join(dir_path, "pharmacy.db")
+        db_path = path.join(dir_path, "database.db")
         conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
